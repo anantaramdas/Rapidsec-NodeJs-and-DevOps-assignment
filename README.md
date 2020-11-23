@@ -1,28 +1,30 @@
 # Rapidsec-NodeJs-and-DevOps-assignment
 
+## Assignment
+
 In this assignment, you need to create a rss processor and deploy it.
 
-## Specifications:
+### Specifications:
 - Use Nodejs
 - Query hackernews each 5 minutes on https://hnrss.org/newest?points=10 endpoint and send transformed results to elasticsearch server
 - Code should be ready to add another rss endpoint with specifics for that endpoint formatter of its data to the structure stored in elasticsearch by using adapter pattern 
 - Data sent to elastic should use batch API in index “rss_feed”
 - Requests logs should be sent to “rss_logs” via post API
-- Elasticsearch api should be extracted into service and use proxy pattern
+- ElasticsearchService api should be extracted into service and use proxy pattern
 
-## The application needs to:
+### The application needs to:
 1. Be running in cron `*/5 * * * *` with a fetch backoff strategy of (400ms, 1s, 2s) per each rss endpoints separate.
 2. Use prettier and eslint.
 3. Have helpful and sane logging.
 
-## This assignment evaluates the following:
+### This assignment evaluates the following:
 1. You can set up a good environment and the correct data flow.
 2. A good structure. 
 3. Clean understandable code.
 4. Use GitHub and break the progress into several commits.
 5. Don’t reinvent the wheel - Use good libraries where it makes sense.
 
-## Tasks that need to be implemented:
+### Tasks that need to be implemented:
 1. Queries rss endpoint and data is converted into correct structure
     - Data is queried from each endpoint one by one
     - Each endpoint has assigned formatter

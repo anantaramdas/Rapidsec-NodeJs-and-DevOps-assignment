@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    # For Windows:
+    # in order to run follow below stepts to configure VM parameters (@see https://stackoverflow.com/a/62078093/81193250
+    #  ```wsl -d docker-desktop and sysctl -w vm.max_map_count=262144
+    #
+    # and put below into docker-compose.yml to have Elasticsearch work (@see https://stackoverflow.com/a/55957214/8119325)
+    # ```environment:
+    # ``` - cluster.initial_master_nodes=elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    environment:
+      - node.name=elasticsearch
+      - cluster.initial_master_nodes=elasticsearch
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.3
+    ports:
+      - "5601:5601"
+  feed-parser:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: feed-parser
+    ports:
+      - 8080:8080
+    depends_on:
+      - elasticsearch
+      - kibana
+    command: ["./wait-for-it.sh", "elasticsearch:9200", "--", "./entrypoint.sh"]#, "-f"]
+    links:
+      - elasticsearch
+      - kibana
