@@ -7,15 +7,17 @@ import {RssFeed} from "../../types/rss-feed";
 import Formattable from "../../models/formattable";
 import {HackerNewsRssItem} from "../../types/hacker-news-rss-item";
 import {TYPES} from "../../types";
+import Logger from "../../models/logger";
 
 @injectable()
 export default class HackerNews extends Source implements Formattable {
-  private static instance: HackerNews;
   public readonly _fetchUrl: string;
+  private readonly logger: Logger;
 
-  constructor( @inject(TYPES.HackerNewsEndpointURL) url: string) {
+  constructor( @inject(TYPES.HackerNewsEndpointURL) url: string, @inject(TYPES.Logger) logger: Logger) {
     super()
     this._fetchUrl = url;
+    this.logger = logger;
   }
 
   /**
@@ -24,14 +26,16 @@ export default class HackerNews extends Source implements Formattable {
    */
   async fetchItems(): Promise<RssFeed[] | null> {
     try {
+      this.logger.info(`...connecting to ${this._fetchUrl} to retrieve data`);
       let response =  await axios.get(this._fetchUrl);
       let parsedData = await xml2js.parseStringPromise(response.data);
 
       let items = parsedData.rss.channel[0].item as HackerNewsRssItem[];
 
+      this.logger.info(`...reformatting received items`);
       return items.map(this.format);
     } catch (exception) {
-      process.stderr.write(`ERROR received from ${this._fetchUrl}: ${exception}\n`);
+      this.logger.error(`Receiving data from ${this._fetchUrl} failed: ${exception}`);
       return null;
     }
   }

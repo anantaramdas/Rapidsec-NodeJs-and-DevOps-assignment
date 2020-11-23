@@ -6,7 +6,7 @@ import HackerNews from "./resources/providers/hacker-news";
 import ElasticsearchService from "./service/elasticsearch-service";
 import Elasticsearch from "./service/elasticsearch";
 import Repository from "./resources/repository";
-import {App} from "./app";
+import Logger from "./models/logger";
 
 require('dotenv').config();
 
@@ -18,5 +18,6 @@ container.bind<HackerNews>(TYPES.HackerNewsRssApiProvider).to(HackerNews).inSing
 container.bind<ElasticsearchService>(TYPES.ElasticsearchService).to(ElasticsearchService).inSingletonScope();
 container.bind<Elasticsearch>(TYPES.Elasticsearch).to(Elasticsearch).inSingletonScope();
 container.bind<Repository>(TYPES.Repository).to(Repository).inSingletonScope();
+container.bind<Logger>(TYPES.Logger).to(Logger).inSingletonScope();
 
 export default container;

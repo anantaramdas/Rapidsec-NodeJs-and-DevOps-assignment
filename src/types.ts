@@ -5,5 +5,5 @@ export const TYPES = {
     Repository: Symbol.for("Repository"),
     HackerNewsEndpointURL: Symbol.for("HackerNewsEndpointURL"),
     ElasticsearchConnectionString: Symbol.for("ElasticsearchConnectionString"),
-    App: Symbol.for("App"),
+    Logger: Symbol.for("Logger"),
 };
