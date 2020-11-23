@@ -1,0 +1,57 @@
+{
+  "name": "rapidsec-nodejs-and-devops-assignment",
+  "version": "1.0.0",
+  "description": "In this assignment, you need to create a rss processor and deploy it.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "rm -Rf ./dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anantaramdas/Rapidsec-NodeJs-and-DevOps-assignment.git"
+  },
+  "author": "Aleksandr Popov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anantaramdas/Rapidsec-NodeJs-and-DevOps-assignment/issues"
+  },
+  "homepage": "https://github.com/anantaramdas/Rapidsec-NodeJs-and-DevOps-assignment#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^14.14.9",
+    "@types/xml2js": "^0.4.7",
+    "chai": "^4.2.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "mocha": "^8.2.1",
+    "prettier": "^2.2.0",
+    "sinon": "^9.2.1",
+    "ts-loader": "^8.0.11",
+    "ts-mockito": "^2.6.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@types/elasticsearch": "^5.0.36",
+    "axios": "^0.21.0",
+    "axios-retry": "^3.1.9",
+    "discord.js": "^12.5.0",
+    "dotenv": "^8.2.0",
+    "elasticsearch": "^16.7.1",
+    "inversify": "^5.0.1",
+    "node-html-parser": "^2.0.0",
+    "reflect-metadata": "^0.1.13",
+    "winston": "^3.3.3",
+    "xml2js": "^0.4.23"
+  }
+}
