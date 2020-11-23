@@ -61,3 +61,12 @@ In this assignment, you need to create a rss processor and deploy it.
 7. Bonus (Optional)
     - Use typescript to make sure everything has a bit of documentation
     - Add visualization (in Kibana or custom UI)  of which shared articles domain are most popular(medium etc), required additional fields
+
+## Setup
+1. Make sure you have NodeJS and Docker installed on your machine
+2. Run `npm install` in checkout directory
+3. **OPTIONAL:** setup `.env` file using provided example
+4. Build TypeScript code using `npm run build`
+5. Build docker containers by running `docker-compose build`
+6. Start docker containers by running `docker-compose up`
+7. Enjoy :)
