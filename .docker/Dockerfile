@@ -24,6 +24,5 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 # Bundle app source
 COPY ./dist/ ./
 COPY ./.docker/wait-for-it.sh ./
-COPY ./.env ./
 
 ENTRYPOINT /usr/src/app/entrypoint.sh

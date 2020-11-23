@@ -37,7 +37,7 @@ services:
     depends_on:
       - elasticsearch
       - kibana
-    command: ["./wait-for-it.sh", "elasticsearch:9200", "--", "./entrypoint.sh"]#, "-f"]
+    command: ["./wait-for-it.sh", "elasticsearch:9200", "--", "./entrypoint.sh"]
     links:
       - elasticsearch
       - kibana

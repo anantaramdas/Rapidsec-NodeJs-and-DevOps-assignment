@@ -12,9 +12,8 @@ require('dotenv').config();
 
 let container = new Container();
 
-container.bind<string>(TYPES.HackerNewsEndpointURL).toConstantValue(process.env.HACKER_NEWS_ENDPOINT_URL!);
-container.bind<string>(TYPES.ElasticsearchConnectionString).toConstantValue(process.env.ELASTICSEARCH_CONNECTION_STR!);
-container.bind<App>(TYPES.App).to(App).inSingletonScope();
+container.bind<string>(TYPES.HackerNewsEndpointURL).toConstantValue(process.env.HACKER_NEWS_ENDPOINT_URL ? process.env.HACKER_NEWS_ENDPOINT_URL : "https://hnrss.org/newest?points=10");
+container.bind<string>(TYPES.ElasticsearchConnectionString).toConstantValue(process.env.ELASTICSEARCH_CONNECTION_STR ? process.env.ELASTICSEARCH_CONNECTION_STR : "http://elastic:changeme@elasticsearch:9200/");
 container.bind<HackerNews>(TYPES.HackerNewsRssApiProvider).to(HackerNews).inSingletonScope();
 container.bind<ElasticsearchService>(TYPES.ElasticsearchService).to(ElasticsearchService).inSingletonScope();
 container.bind<Elasticsearch>(TYPES.Elasticsearch).to(Elasticsearch).inSingletonScope();
